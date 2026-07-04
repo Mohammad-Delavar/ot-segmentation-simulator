@@ -1,1 +1,16 @@
-asset_id,name,type,vendor,model,ip,zone,purdue_level,criticality
+id,name,type,ip_address,zone,purdue_level,criticality,vendor,model,firmware,os,exposure,known_vulnerabilities,patch_status,backup_available,maintenance_window,risk_score,notes
+A1,Main_PLC_1,PLC,192.168.1.10,Control,1,Critical,Siemens,S7-1500,V2.8,N/A,Internal,CVE-2020-15782,Outdated,Yes,Sunday 02:00-04:00,85,Primary controller for production line 1
+A2,Main_PLC_2,PLC,192.168.1.11,Control,1,Critical,Siemens,S7-1500,V2.8,N/A,Internal,CVE-2020-15782,Outdated,Yes,Sunday 02:00-04:00,82,Primary controller for production line 2
+A3,Line_HMI,HMI,192.168.1.20,Control,2,High,Schneider,Magelis,V6.2,Windows Embedded,Internal,None,Supported,Yes,Sunday 02:00-04:00,68,Operator interface for line control
+A4,SCADA_Server,SCADA,10.0.1.5,SCADA,3,Critical,Rockwell,FactoryTalk,V12,Windows Server 2016,Internal,CVE-2021-34527,Outdated,Yes,Saturday 01:00-03:00,88,Central SCADA server
+A5,Historian,Historian,10.0.1.10,SCADA,3,High,OSIsoft,PI Server,2018,Windows Server 2016,Internal,None,Outdated,Yes,Saturday 01:00-03:00,72,Collects process history and production data
+A6,Eng_Station,Engineering Station,10.0.1.50,Engineering,3,High,Dell,Precision,BIOS-1.12,Windows 10,Internal,CVE-2021-44228,Outdated,No,Sunday 03:00-05:00,78,Used for PLC programming and maintenance
+A7,DMZ_Gateway,Gateway,172.16.0.1,DMZ,3,High,Cisco,ASA,9.12,N/A,DMZ,CVE-2020-3452,Outdated,Yes,Friday 23:00-01:00,80,Remote access and DMZ firewall gateway
+A8,ERP_Server,IT Server,10.20.0.5,IT,4,Medium,HP,ProLiant,N/A,Windows Server 2019,Enterprise,None,Supported,Yes,Saturday 03:00-05:00,45,Receives production reports
+A9,Jump_Server,Jump Host,172.16.0.10,DMZ,3,High,Microsoft,Windows Server,2019,Windows Server 2019,DMZ,None,Supported,Yes,Friday 23:00-01:00,62,Controlled remote access jump host
+A10,Vendor_Laptop,Vendor Workstation,203.0.113.25,Vendor,5,Medium,Unknown,Unknown,Unknown,Windows 10,External,Unknown,Unknown,No,On request,90,External vendor support endpoint
+A11,Safety_PLC,Safety PLC,192.168.1.30,Control,1,Critical,Triconex,Tricon CX,Unknown,N/A,Internal,Unknown,Unknown,Yes,Shutdown only,95,Safety instrumented system controller
+A12,OPC_Gateway,OPC Gateway,10.0.1.20,SCADA,3,High,Kepware,KEPServerEX,V6.10,Windows Server 2016,Internal,CVE-2022-2848,Outdated,Yes,Saturday 01:00-03:00,76,Protocol gateway between PLCs and SCADA systems
+A13,Patch_Server,Patch Server,172.16.0.20,DMZ,3,Medium,Microsoft,WSUS,2019,Windows Server 2019,DMZ,None,Supported,Yes,Friday 23:00-01:00,55,Patch staging server for OT assets
+A14,Domain_Controller,Domain Controller,10.20.0.10,IT,4,High,Microsoft,Active Directory,2019,Windows Server 2019,Enterprise,None,Supported,Yes,Saturday 03:00-05:00,70,Enterprise identity services
+A15,Backup_Server,Backup Server,10.0.1.30,SCADA,3,High,Veeam,Backup Repository,V11,Windows Server 2019,Internal,None,Supported,Yes,Saturday 01:00-03:00,60,Backup server for SCADA and engineering systems
