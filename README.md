@@ -30,7 +30,6 @@ In OT environments, a single misconfigured conduit can expose a Level 1 controll
 - 📊 **Interactive visualization** — A **Streamlit** web app with:
   - **Sankey diagrams** to visualize traffic flow between zones
   - **Heatmaps** for zone-to-zone communication density
-  - A custom **enterprise-grade dark theme** (CSS)
 - ⚡ **Fast CLI** — Powered by **Typer** for clean, scriptable, CI-friendly execution.
 - 📁 **Portable & reproducible** — Everything is plain CSV + Python; no database required.
 
