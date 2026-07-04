@@ -1,4 +1,3 @@
-# src/ot_simulator/exceptions.py
 """Custom exception hierarchy for the OT Simulator."""
 from __future__ import annotations
 

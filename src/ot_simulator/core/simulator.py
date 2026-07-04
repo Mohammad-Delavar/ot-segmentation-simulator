@@ -1,4 +1,3 @@
-# src/ot_simulator/core/simulator.py
 """
 Simulation engine to evaluate policy impact on traffic flows.
 """

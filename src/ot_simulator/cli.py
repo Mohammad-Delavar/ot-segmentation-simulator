@@ -1,7 +1,3 @@
-# src/ot_simulator/cli.py
-"""
-Command-line interface for the OT Simulator.
-"""
 import typer
 import json
 from pathlib import Path
@@ -36,18 +32,15 @@ def simulate(
     Run simulation and analysis.
     """
     try:
-        # 1. Load Data
         typer.echo("Loading data files...")
         asset_result = load_assets(assets_csv, strict=strict)
         flow_result = load_flows(flows_csv, strict=strict)
         policy_result = load_policy(policy_csv, strict=strict)
 
-        # Surface any per-row errors
         _report_errors("assets", asset_result)
         _report_errors("flows", flow_result)
         _report_errors("policy", policy_result)
 
-        # 2. Extract clean data from LoadResult
         assets = asset_result.items
         flows = flow_result.items
 
@@ -55,28 +48,24 @@ def simulate(
             typer.secho("Error: no valid firewall rules loaded; cannot simulate.",
                         fg=typer.colors.RED)
             raise typer.Exit(code=1)
-        policy = policy_result.items[0]  # load_policy wraps rules in one Policy
+        policy = policy_result.items[0]  
 
         if not assets or not flows:
             typer.secho("Error: assets or flows are empty after loading.",
                         fg=typer.colors.RED)
             raise typer.Exit(code=1)
 
-        # 3. Run Simulation
         typer.echo("Running simulation engine...")
         sim = Simulator(assets, flows, policy)
         result = sim.simulate()
 
-        # 4. Analyze Impact
         typer.echo("Analyzing results...")
         analyzer = Analyzer(result, assets, flows)
         report = analyzer.analyze()
 
-        # 5. Report
         print_simulation_result(result)
         print_impact_report(report)
 
-        # 6. Save if requested
         if output_json:
             with open(output_json, "w") as f:
                 json.dump(report.model_dump(), f, indent=4, default=str)

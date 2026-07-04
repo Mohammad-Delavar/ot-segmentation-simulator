@@ -1,4 +1,3 @@
-# src/ot_simulator/models/policy.py
 """
 Data models for firewall rules and segmentation policies.
 """
@@ -61,7 +60,6 @@ class FirewallRule(BaseModel):
         Returns:
             True if rule matches
         """
-        # None or "*" means match any
         if self.source_zone and self.source_zone != "*" and self.source_zone != source_zone:
             return False
         if self.destination_zone and self.destination_zone != "*" and self.destination_zone != dest_zone:
@@ -119,15 +117,12 @@ class Policy(BaseModel):
         Returns:
             ALLOW or DENY based on matching rule or default action
         """
-        # Sort rules by priority
         sorted_rules = sorted(self.rules, key=lambda r: r.priority)
         
-        # Find first matching rule
         for rule in sorted_rules:
             if rule.matches(source_zone, dest_zone, protocol, port):
                 return rule.action
         
-        # No match, return default action
         return self.default_action
 
     def __str__(self) -> str:

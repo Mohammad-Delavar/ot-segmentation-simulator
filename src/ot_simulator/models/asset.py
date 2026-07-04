@@ -1,4 +1,3 @@
-# src/ot_simulator/models/asset.py
 """
 Data models for OT assets and network zones.
 """

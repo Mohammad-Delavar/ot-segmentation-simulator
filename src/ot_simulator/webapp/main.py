@@ -1,4 +1,3 @@
-# src/ot_simulator/webapp.py
 """
 Web UI for OT Simulator using Streamlit.
 """

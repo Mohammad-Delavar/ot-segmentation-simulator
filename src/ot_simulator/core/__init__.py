@@ -1,4 +1,3 @@
-# src/ot_simulator/core/__init__.py
 """
 Core simulation and analysis logic.
 """

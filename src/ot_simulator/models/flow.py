@@ -1,4 +1,3 @@
-# src/ot_simulator/models/flow.py
 """
 Data models for network traffic flows between assets.
 """

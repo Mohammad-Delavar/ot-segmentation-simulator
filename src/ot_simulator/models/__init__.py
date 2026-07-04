@@ -1,4 +1,3 @@
-# src/ot_simulator/models/__init__.py
 """
 Data models for OT assets, flows, and policies.
 """

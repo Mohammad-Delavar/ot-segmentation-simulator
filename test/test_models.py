@@ -1,4 +1,3 @@
-# tests/test_models.py
 import pytest
 from ot_simulator.models.asset import Asset, PurdueLevel, Criticality
 from ot_simulator.models.policy import Policy, FirewallRule, RuleAction
