@@ -70,9 +70,10 @@ In OT environments, a single misconfigured conduit can expose a Level 1 controll
 ### Install from source
 bash
 # Clone the repository
+```bash
 git clone https://github.com/Mohammad-Delavar/ot-segmentation-simulator.git
 cd ot-segmentation-simulator
-
+```
 # Install (editable mode recommended for development)
 pip install -e .
 
@@ -86,8 +87,10 @@ This installs the `ot-sim` command and its dependencies (`pandas`, `pydantic`, `
 
 Run a full segmentation analysis against your model:
 
-bash
+```bash
+
 ot-sim --assets .\data\sample_assets.csv --flows .\data\sample_flows.csv --policy .\data\sample_policy.csv
+```
 
 **Options:**
 
@@ -103,8 +106,10 @@ The CLI validates all inputs and prints an evaluation of each flow against the d
 
 For interactive exploration and visualization:
 
-bash
+```bash
+
 streamlit run webapp.py
+```
 
 Upload your `assets`, `flows`, and `policy` CSV files through the UI to render **Sankey flow diagrams** and **zone communication heatmaps** in a custom dark-themed dashboard.
 
