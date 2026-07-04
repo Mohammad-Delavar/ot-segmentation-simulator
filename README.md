@@ -70,7 +70,7 @@ In OT environments, a single misconfigured conduit can expose a Level 1 controll
 ### Install from source
 bash
 # Clone the repository
-git clone https://github.com/<your-username>/ot-segmentation-simulator.git
+git clone https://github.com/Mohammad-Delavar/ot-segmentation-simulator.git
 cd ot-segmentation-simulator
 
 # Install (editable mode recommended for development)
