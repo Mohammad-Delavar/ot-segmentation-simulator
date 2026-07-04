@@ -1,0 +1,31 @@
+id,source_asset_id,destination_asset_id,protocol,port,direction,criticality,description,business_purpose,expected_frequency,security_risk,operational_impact,approved
+F1,A3,A1,S7,102,bidirectional,Critical,HMI controls PLC 1,Operator control,Continuous,Medium,Loss of control and visibility for line 1,Yes
+F2,A3,A2,S7,102,bidirectional,Critical,HMI controls PLC 2,Operator control,Continuous,Medium,Loss of control and visibility for line 2,Yes
+F3,A4,A1,Modbus,502,unidirectional,High,SCADA monitors PLC 1,Process monitoring,Continuous,Medium,Reduced monitoring of PLC 1,Yes
+F4,A4,A2,Modbus,502,unidirectional,High,SCADA monitors PLC 2,Process monitoring,Continuous,Medium,Reduced monitoring of PLC 2,Yes
+F5,A1,A5,OPC-UA,4840,unidirectional,Medium,PLC 1 sends data to Historian,Historical data collection,Continuous,Low,Loss of production history for line 1,Yes
+F6,A2,A5,OPC-UA,4840,unidirectional,Medium,PLC 2 sends data to Historian,Historical data collection,Continuous,Low,Loss of production history for line 2,Yes
+F7,A6,A1,S7,102,bidirectional,High,Engineering station programs PLC 1,Maintenance and troubleshooting,On demand,High,Engineering access to PLC 1 unavailable,Yes
+F8,A6,A2,S7,102,bidirectional,High,Engineering station programs PLC 2,Maintenance and troubleshooting,On demand,High,Engineering access to PLC 2 unavailable,Yes
+F9,A4,A8,HTTP,80,unidirectional,Low,SCADA sends report to ERP,Production reporting,Hourly,High,Report delivery may fail,No
+F10,A4,A8,HTTPS,443,unidirectional,Medium,SCADA sends secured report to ERP,Production reporting,Hourly,Medium,Report delivery may fail,Yes
+F11,A10,A7,HTTPS,443,bidirectional,Medium,Vendor connects to DMZ gateway,Vendor support,On demand,High,Remote support unavailable,Yes
+F12,A7,A9,RDP,3389,bidirectional,Medium,DMZ gateway reaches jump server,Controlled remote access,On demand,High,Jump access unavailable,Yes
+F13,A9,A4,RDP,3389,bidirectional,High,Jump server reaches SCADA server,Remote SCADA support,On demand,High,Remote SCADA support unavailable,Yes
+F14,A10,A4,SSH,22,bidirectional,Medium,Direct vendor SSH to SCADA,Unauthorized remote access,Unknown,Critical,Potential compromise of SCADA server,No
+F15,A8,A4,SMB,445,bidirectional,Medium,ERP attempts SMB to SCADA,File sharing,Unknown,High,Lateral movement path from IT to OT,No
+F16,A4,A12,OPC-UA,4840,bidirectional,High,SCADA communicates with OPC gateway,Data aggregation,Continuous,Medium,SCADA loses gateway data,Yes
+F17,A12,A1,S7,102,bidirectional,High,OPC gateway communicates with PLC 1,Protocol gateway polling,Continuous,Medium,OPC data for PLC 1 unavailable,Yes
+F18,A12,A2,S7,102,bidirectional,High,OPC gateway communicates with PLC 2,Protocol gateway polling,Continuous,Medium,OPC data for PLC 2 unavailable,Yes
+F19,A6,A11,Triconex,1502,bidirectional,Critical,Engineering access to Safety PLC,Safety maintenance,Rare,Critical,Safety PLC maintenance unavailable,Yes
+F20,A4,A11,Triconex,1502,unidirectional,Critical,SCADA reads Safety PLC status,Safety monitoring,Continuous,High,Loss of safety status visibility,Yes
+F21,A13,A4,SMB,445,bidirectional,Medium,Patch server file share to SCADA,Patch staging,Monthly,Medium,Patch delivery unavailable,Yes
+F22,A13,A6,SMB,445,bidirectional,Medium,Patch server file share to engineering station,Patch staging,Monthly,Medium,Patch delivery unavailable,Yes
+F23,A15,A4,SMB,445,bidirectional,High,Backup server backs up SCADA,Backup operation,Daily,Medium,SCADA backup may fail,Yes
+F24,A15,A6,SMB,445,bidirectional,High,Backup server backs up engineering station,Backup operation,Daily,Medium,Engineering backup may fail,Yes
+F25,A4,A14,LDAP,389,bidirectional,Medium,SCADA authenticates to domain controller,Authentication,On demand,High,Authentication dependency on IT,No
+F26,A4,A14,LDAPS,636,bidirectional,Medium,SCADA authenticates securely to domain controller,Authentication,On demand,Medium,Authentication dependency on IT,Yes
+F27,A6,A8,RDP,3389,bidirectional,Low,Engineering station RDP to ERP,Unknown admin access,Unknown,High,Potential lateral movement from OT to IT,No
+F28,A8,A6,RDP,3389,bidirectional,High,ERP RDP to engineering station,Unauthorized IT to OT access,Unknown,Critical,Potential compromise of engineering workstation,No
+F29,A4,A13,HTTPS,443,unidirectional,Medium,SCADA reaches patch server web service,Patch metadata,Weekly,Medium,Patch visibility unavailable,Yes
+F30,A1,A2,S7,102,bidirectional,Critical,PLC 1 communicates with PLC 2,Inter-controller coordination,Continuous,Medium,Production synchronization may fail,Yes
