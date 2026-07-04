@@ -1,0 +1,42 @@
+rule_id,source_zone,dest_zone,protocol,port,action,priority,description,risk_rationale,change_risk
+R1,SCADA,Control,S7,102,ALLOW,10,Allow SCADA or OPC gateway to Siemens PLCs,Required for OT control and monitoring,Medium
+R2,SCADA,Control,Modbus,502,ALLOW,11,Allow SCADA Modbus polling to control devices,Required for legacy monitoring,Medium
+R3,Control,SCADA,OPC-UA,4840,ALLOW,12,Allow PLC or gateway data publishing to SCADA and historian,Required for process data collection,Low
+R4,SCADA,SCADA,OPC-UA,4840,ALLOW,13,Allow SCADA zone OPC-UA communication,Required for OPC gateway and SCADA integration,Low
+R5,Engineering,Control,S7,102,ALLOW,20,Allow engineering workstation to Siemens PLCs,Required during approved maintenance,High
+R6,Engineering,Control,Modbus,502,ALLOW,21,Allow engineering workstation to Modbus devices,Required during approved maintenance,High
+R7,Engineering,Control,Triconex,1502,ALLOW,22,Allow engineering access to safety PLC only during outage,High-risk safety maintenance access,Critical
+R8,SCADA,Control,Triconex,1502,ALLOW,23,Allow SCADA read access to safety PLC status,Required for safety visibility,High
+R9,Vendor,DMZ,HTTPS,443,ALLOW,30,Allow vendor access only to DMZ gateway,Remote support must terminate in DMZ,High
+R10,DMZ,DMZ,RDP,3389,ALLOW,31,Allow DMZ gateway to jump server RDP,Controlled remote support path,High
+R11,DMZ,SCADA,RDP,3389,ALLOW,32,Allow jump server to SCADA RDP,Approved controlled support path,High
+R12,SCADA,IT,HTTPS,443,ALLOW,40,Allow secured SCADA reporting to ERP,Required business reporting,Medium
+R13,SCADA,IT,HTTP,80,DENY,41,Deny insecure SCADA reporting over HTTP,Plaintext protocol risk,Low
+R14,SCADA,IT,LDAPS,636,ALLOW,42,Allow secure authentication dependency if approved,Identity service dependency,Medium
+R15,SCADA,IT,LDAP,389,DENY,43,Deny insecure LDAP from SCADA to IT,Plaintext credential exposure risk,Medium
+R16,DMZ,SCADA,HTTPS,443,ALLOW,50,Allow DMZ service access to SCADA HTTPS if required,Controlled service integration,Medium
+R17,DMZ,Engineering,RDP,3389,ALLOW,51,Allow jump server to engineering workstation RDP,Controlled engineering support path,High
+R18,DMZ,SCADA,SMB,445,DENY,52,Deny SMB from DMZ to SCADA,High lateral movement risk,Medium
+R19,DMZ,Engineering,SMB,445,DENY,53,Deny SMB from DMZ to engineering zone,High lateral movement risk,Medium
+R20,SCADA,DMZ,HTTPS,443,ALLOW,60,Allow SCADA to DMZ patch or broker services,Patch metadata or broker communication,Medium
+R21,DMZ,SCADA,SMB,445,ALLOW,61,Allow approved patch or backup SMB from DMZ to SCADA,Required only for controlled patch or backup workflows,High
+R22,SCADA,SCADA,SMB,445,ALLOW,62,Allow internal SCADA backup SMB traffic,Required for backup operations,Medium
+R23,IT,SCADA,*,*,DENY,70,Deny direct IT to SCADA access,Prevents IT to OT lateral movement,Low
+R24,IT,Control,*,*,DENY,71,Deny direct IT to Control access,Prevents direct enterprise access to controllers,Low
+R25,IT,Engineering,*,*,DENY,72,Deny direct IT to Engineering access,Protects engineering workstation from IT-origin attacks,Low
+R26,Vendor,SCADA,*,*,DENY,73,Deny direct vendor to SCADA access,Vendor must use DMZ jump path,Low
+R27,Vendor,Control,*,*,DENY,74,Deny direct vendor to Control access,Prevents external access to PLCs,Low
+R28,Vendor,Engineering,*,*,DENY,75,Deny direct vendor to Engineering access,Vendor must use controlled jump path,Low
+R29,IT,DMZ,HTTPS,443,ALLOW,80,Allow enterprise access to DMZ services,Permits controlled enterprise-to-DMZ workflows,Medium
+R30,SCADA,Control,ICMP,*,ALLOW,90,Allow limited troubleshooting ping from SCADA to Control,Diagnostics only,Low
+R31,Engineering,Control,ICMP,*,ALLOW,91,Allow limited troubleshooting ping from Engineering to Control,Diagnostics only,Low
+R32,Control,Control,S7,102,ALLOW,100,Allow inter-PLC Siemens communication,Required for controller coordination,Medium
+R33,Control,Control,Modbus,502,ALLOW,101,Allow inter-controller Modbus communication if required,Legacy controller coordination,Medium
+R34,Control,Control,OPC-UA,4840,ALLOW,102,Allow control-zone OPC-UA where required,Gateway or controller data exchange,Medium
+R35,*,*,SSH,22,DENY,200,Deny SSH by default across OT,Admin protocol not approved by default,Low
+R36,*,*,Telnet,23,DENY,201,Deny Telnet everywhere,Insecure legacy remote shell,Low
+R37,*,*,FTP,21,DENY,202,Deny FTP everywhere,Insecure file transfer,Low
+R38,*,*,HTTP,80,DENY,203,Deny HTTP by default,Plaintext web traffic risk,Low
+R39,*,*,SMB,445,DENY,204,Deny SMB by default unless explicitly allowed,Lateral movement and ransomware risk,Medium
+R40,*,*,RDP,3389,DENY,205,Deny RDP by default unless explicitly allowed,Remote access abuse risk,Medium
+R41,*,*,*,*,DENY,999,Default deny all unmatched traffic,Zero trust segmentation baseline,Low
