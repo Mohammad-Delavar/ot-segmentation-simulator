@@ -8,6 +8,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Built with Typer](https://img.shields.io/badge/CLI-Typer-lightgrey.svg)](https://typer.tiangolo.com/)
 [![Web UI](https://img.shields.io/badge/UI-Streamlit-red.svg)](https://streamlit.io/)
+<img width="1920" height="993" alt="image" src="https://github.com/user-attachments/assets/845db0b1-c841-4309-a32d-c4538118cf03" />
 
 ---
 
